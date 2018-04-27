@@ -2,14 +2,16 @@
 $(document).ready(function () {
     console.log("Ready!");
 
+    var database = firebase.database();
+
     // Button for adding trains
-    $("#add-employee-btn").on("click", function (event) {
+    $("#add-train-btn").on("click", function (event) {
         event.preventDefault();
 
         // Grabs user input
         var trainName = $("#train-name-input").val().trim();
         var destination = $("#destination-input").val().trim();
-        var firstTrain = moment($("#first-train-input").val().trim() , HH.mm);
+        var firstTrain = moment($("#first-train-input").val().trim() , "HH.mm");
         var frequency = $("#frequency-input").val().trim();
 
         // Creates local "temporary" object for holding employee data
