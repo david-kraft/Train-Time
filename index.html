@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+
+    <!-- Moment JS -->
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+
+    <title>Train Time</title>
+</head>
+
+<body>
+
+    <!-- Contains all project content -->
+    <div class="container">
+
+        <!-- Jumbotron with the project's intro -->
+        <div class="jumbotron">
+            <h1>Anytime Is Train Time</h1>
+            <h5>Choo choo. Choo choo.</h5>
+        </div>
+
+        <!-- Empty table of trains to be populated with script -->
+        <div class="card">
+            <h5 class="card-header">Current Train Schedule</h5>
+            <div class="card-body" id="trainSchedule">
+                <table class="table table-responsive">
+                    <thead>
+                        <tr>
+                            <th scope="col">Train Name</th>
+                            <th scope="col">Destination</th>
+                            <th scope="col">Frequency (min)</th>
+                            <th scope="col">Next Arrival</th>
+                            <th scope="col">Minutes Away</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableContent">
+                        <tr>
+                            <td>No trains scheduled to depart today</td>
+                            <td>---</td>
+                            <td>---</td>
+                            <td>--:--</td>
+                            <td>---</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+
+        <div class="card">
+            <h5 class="card-header">Add Train</h5>
+            <div class="card-body" id="addTrainForm">
+                <form>
+                    <div class="form-group">
+                        <label for="train-name-input">Train Name</label>
+                        <input type="text" class="form-control" id="train-name-input">
+                    </div>
+                    <div class="form-group">
+                        <label for="destination-input">Destination</label>
+                        <input type="text" class="form-control" id="destination-input">
+                    </div>
+                    <div class="form-group">
+                        <label for="first-train-input">First Train Time (HH:mm - military time)</label>
+                        <input type="text" class="form-control" id="first-train-input">
+                    </div>
+                    <div class="form-group">
+                        <label for="frequency-input">Frequency (min)</label>
+                        <input type="text" class="form-control" id="frequency-input">
+                    </div>
+                </form>
+                <a href="#" class="btn btn-primary" id="add-train-btn">Go somewhere</a>
+            </div>
+        </div>
+
+    </div>
+    <!-- Ends the container that holds project content -->
+
+    <!-- Load Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyBr2ThE4gv4jPvSa1XyFijc5m3Q40LAE84",
+            authDomain: "train-time-c1ca8.firebaseapp.com",
+            databaseURL: "https://train-time-c1ca8.firebaseio.com",
+            projectId: "train-time-c1ca8",
+            storageBucket: "train-time-c1ca8.appspot.com",
+            messagingSenderId: "834806441092"
+        };
+        firebase.initializeApp(config);
+    </script>
+
+</body>
+
+</html>
