@@ -35,7 +35,7 @@
         </div>
 
         <!-- Empty table of trains to be populated with script -->
-        <div class="card">
+        <div class="card my-1">
             <h5 class="card-header">Current Train Schedule</h5>
             <div class="card-body" id="trainSchedule">
                 <table class="table table-responsive">
@@ -48,21 +48,15 @@
                             <th scope="col">Minutes Away</th>
                         </tr>
                     </thead>
-                    <tbody id="tableContent">
-                        <tr>
-                            <td>No trains scheduled to depart today</td>
-                            <td>---</td>
-                            <td>---</td>
-                            <td>--:--</td>
-                            <td>---</td>
-                        </tr>
+                    <tbody id="table-content">
+                        <!-- Table contents contained in Firebase inserted here by script.js -->
                     </tbody>
                 </table>
             </div>
         </div>
 
 
-        <div class="card">
+        <div class="card my-1">
             <h5 class="card-header">Add Train</h5>
             <div class="card-body" id="addTrainForm">
                 <form>
