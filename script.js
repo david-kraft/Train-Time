@@ -72,12 +72,12 @@ $(document).ready(function () {
         var tRemainder = diffTime % trainFrequency;
         console.log(tRemainder);
 
-        // Minute Until Train
-        var tMinutesTillTrain = trainFrequency - tRemainder;
-        console.log("MINUTES TILL TRAIN: " + tMinutesTillTrain);
+        // Minutes Until Train
+        var tMinutesTilTrain = trainFrequency - tRemainder;
+        console.log("MINUTES TIL TRAIN: " + tMinutesTilTrain);
 
         // Next Train
-        var nextTrain = moment().add(tMinutesTillTrain, "minutes").format("hh:mm");
+        var nextTrain = moment().add(tMinutesTilTrain, "minutes").format("hh:mm");
         console.log("ARRIVAL TIME: " + moment(nextTrain).format("hh:mm"));
 
         // Add each train's data into the table
