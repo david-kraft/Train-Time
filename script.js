@@ -23,7 +23,7 @@ $(document).ready(function () {
         };
 
         // Uploads employee data to the database
-        database.ref().push(newTrain);
+        database.ref(trainName).set(newTrain);
 
         // Logs everything to console
         console.log("newTrain.name" + newTrain.name);
@@ -41,15 +41,20 @@ $(document).ready(function () {
     });
 
     // Create Firebase event for adding train to the database and a row in the html when a user adds an entry
-    database.ref().on("child_added", function (childSnapshot, prevChildKey) {
+    database.ref().on("value", function (childSnapshot) {
+        var trainName;
+        var trainDestination;
+        var firstTrain;
+        var trainFrequency;
 
-        console.log(childSnapshot.val());
-
-        // Store everything into a variable.
-        var trainName = childSnapshot.val().name;
-        var trainDestination = childSnapshot.val().destination;
-        var firstTrain = childSnapshot.val().first;
-        var trainFrequency = childSnapshot.val().frequency;
+        childSnapshot.forEach(function(train){
+          console.log(train.val());
+          var trainVal = train.val()
+          trainName = trainVal.name;
+          trainDestination = trainVal.destination;
+          firstTrain = trainVal.first;
+          trainFrequency = trainVal.frequency;
+        })
 
         console.log(trainName);
         console.log(trainDestination);
@@ -77,11 +82,11 @@ $(document).ready(function () {
         console.log("MINUTES TIL TRAIN: " + tMinutesTilTrain);
 
         // Next Train
-        var nextTrain = moment().add(tMinutesTilTrain, "minutes").format("hh:mm");
+        var nextTrain = currentTime.add(tMinutesTilTrain, "minutes").format("hh:mm");
         console.log("ARRIVAL TIME: " + moment(nextTrain).format("hh:mm"));
 
         // Add each train's data into the table
-        $("#table-content").append("<tr><td>" + trainName + "</td><td>" + trainDestination + "</td><td>" + trainFrequency + "</td><td>" + nextTrain + "</td><td>" + tMinutesTillTrain + "</td></tr>");
+        $("#table-content").append("<tr><td>" + trainName + "</td><td>" + trainDestination +   "</td><td>" + trainFrequency + "</td><td>" + nextTrain + "</td><td>" + tMinutesTillTrain + "</td></tr>");
     });
 
 });/* End document ready */
